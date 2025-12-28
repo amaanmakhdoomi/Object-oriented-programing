@@ -1,23 +1,35 @@
 #include <iostream>
-#include <iomanip>
 using namespace std;
+
+class BMI
+{
+    float weight, height;
+
+public:
+    BMI(float w, float h)
+    {
+        weight = w;
+        height = h;
+    }
+
+    void calculate()
+    {
+        float bmi = weight / (height * height);
+        cout << "BMI = " << bmi << endl;
+
+        if (bmi < 18.5)
+            cout << "Underweight\n";
+        else if (bmi < 25)
+            cout << "Normal\n";
+        else
+            cout << "Overweight\n";
+    }
+};
+
 int main()
 {
-    float wt, ht, bmi;
-    cout<<"the weight of the person is: ";
-    cin>>wt;
-    cout<<"the height of the person is: ";
-    cin>>ht;
-    bmi = wt/(ht*ht);
-    cout<<fixed<<setprecision(2);
-    cout<<bmi<<endl;
-    if (bmi < 18.5)
-        cout<<"category: underweight"<<endl;
-    else if (bmi>= 18.5 && bmi < 24.9)
-        cout<<"category:Normal weight"<<endl;
-    else if (bmi >= 25 && bmi < 29.9)
-        cout<<"category: overweight"<< endl;
-    else
-        cout<<"category: obese"<< endl;
+    BMI b(65, 1.7);
+    b.calculate();
     return 0;
 }
+
